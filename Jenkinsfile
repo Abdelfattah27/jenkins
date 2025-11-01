@@ -33,7 +33,7 @@ pipeline {
             steps {
                 script {
                     def buildfun = new edu.iti.docker()
-                    buildfun.build("man218/java-repo", "${BUILD_NUMBER}")
+                    buildfun.build("ayman218/java-repo", "${BUILD_NUMBER}")
                 }
             }
         }
@@ -46,5 +46,24 @@ pipeline {
                 }
             }
         }
+        stage('Docker Deploy') {
+            steps {
+                script {
+                    def deployfun = new edu.iti.docker()
+                    deployfun.deploy("ayman218/java-repo", "${BUILD_NUMBER}")
+                }
+            }
+        }
     }
+    post {
+        always {
+            cleanWs()    
+        success {
+            echo 'success'
+        }
+        failure {
+            echo 'failed'
+        }
+    }
+}
 }
