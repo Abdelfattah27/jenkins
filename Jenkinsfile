@@ -7,12 +7,7 @@ pipeline {
         maven 'mvn-3-5-2'
     }
 
-    // stages {
-    //     stage('Check SCM') {
-    //         steps {
-    //             git branch: 'main', url: 'https://github.com/Hassan-Eid-Hassan/python-iti'
-    //         }
-    //     }
+    stages {
         stage('Build') {
             steps {
                 sh 'mvn package install'
@@ -24,3 +19,4 @@ pipeline {
             }
         }
     }
+}
