@@ -4,9 +4,9 @@ node("agent-0"){
     
     stage("Build"){
         sh "java -version"
-        sh '''
+        sh """
         env.PATH = "${maven}/bin:${env.PATH}"
-        '''
+        """
         sh "java -version"
         sh "mvn package install"
     }
