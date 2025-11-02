@@ -10,8 +10,7 @@ pipeline {
     }
 
     environment {
-        dockerUserName = credentials("docker-user")
-        dockerPassword = credentials("docker-pass")
+        dockerPassword = credentials("dockerhub-pass")
     }
 
     stages {
@@ -41,7 +40,7 @@ pipeline {
             steps {
                 script {
                     def buildfun = new edu.iti.docker()
-                    buildfun.login("${dockerUserName}", "${dockerPassword}")
+                    buildfun.login("abdelfattah273", "${dockerPassword}")
                     buildfun.push("abdelfattah273/jenkinslab", "${BUILD_NUMBER}")
                 }
             }
