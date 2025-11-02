@@ -33,7 +33,7 @@ pipeline {
             steps {
                 script {
                     def buildfun = new edu.iti.docker()
-                    buildfun.build("ayman218/java-repo", "${BUILD_NUMBER}")
+                    buildfun.build("abdelfattah273/jenkinslab", "${BUILD_NUMBER}")
                 }
             }
         }
@@ -42,7 +42,7 @@ pipeline {
                 script {
                     def buildfun = new edu.iti.docker()
                     buildfun.login("${dockerUserName}", "${dockerPassword}")
-                    buildfun.push("ayman218/java-repo", "${BUILD_NUMBER}")
+                    buildfun.push("abdelfattah273/jenkinslab", "${BUILD_NUMBER}")
                 }
             }
         }
@@ -50,7 +50,7 @@ pipeline {
             steps {
                 script {
                     def deployfun = new edu.iti.docker()
-                    deployfun.deploy("ayman218/java-repo", "${BUILD_NUMBER}")
+                    deployfun.deploy("abdelfattah273/jenkinslab", "${BUILD_NUMBER}")
                 }
             }
         }
